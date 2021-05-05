@@ -46,7 +46,7 @@ library(tidyverse)
 
 
 
-```{r}
+```{r trend, fig.cap="The trend of offence"}
 crime <- read.csv("data/Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
 
 crime_tidy <- crime %>%
@@ -62,8 +62,7 @@ ggplot(crime_tidy,
   geom_col()
 
 ```
-
-
+In this figure\@ref(fig:trend), it's shown the trend of offence over time.
 
 
 \clearpage
