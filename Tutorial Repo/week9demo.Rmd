@@ -33,13 +33,42 @@ header-includes:
 
 \clearpage
 
-# Section 1
+# Section 1 - A Crimes against the person
 
 ```{r library}
 library(broom)
 library(tidyverse)
-library()
+library(ggplot2)
+library(janitor)
+library(bookdown)
 ```
+
+```{r readdata}
+dat <- read.csv("data/Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
+```
+
+```{r}
+dat_new <- dat %>%
+  select(Year, Offence.Division, Incidents.Recorded)
+```
+
+```{r}
+dat_a <- dat_new %>% filter(Offence.Division == "A Crimes against the person") %>% 
+  mutate(Incidents.Recorded = as.numeric(Incidents.Recorded))
+
+ggplot(dat_a, aes(x = Incidents.Recorded, color = Year)) +
+  geom_bar(stat = "count", position = "stack")+
+  theme_bw() +
+  facet_wrap(~ Year)
+
+```
+
+
+```{r}
+
+```
+
+
 
 \clearpage
 
