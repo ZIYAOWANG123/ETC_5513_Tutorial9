@@ -38,7 +38,32 @@ header-includes:
 
 \clearpage
 
-# Section 2
+# Section 2:Drug offences_Xinying Xu
+
+```{r}
+library(tidyverse)
+```
+
+
+
+```{r}
+crime <- read.csv("data/Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
+
+crime_tidy <- crime %>%
+  filter(Offence.Division == "C Drug offences") %>%
+  select(Year, Offence.Division, Incidents.Recorded)%>%
+  mutate(Incidents.Recorded = as.numeric(Incidents.Recorded))%>%
+  mutate(Year = as.factor(Year))%>%
+  group_by(Year)%>%
+  summarise(Total =sum(Incidents.Recorded, na.rm = TRUE))
+
+ggplot(crime_tidy,
+       aes(Year, Total))+
+  geom_col()
+
+```
+
+
 
 
 \clearpage
