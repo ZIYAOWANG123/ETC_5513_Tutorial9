@@ -44,9 +44,58 @@ header-includes:
 \clearpage
 
 # Section 3
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r , message = FALSE, warning = FALSE}
+# Libraries
+
+library(tidyverse)
+library(readr)
+library(kableExtra)
+library(bookdown)
+library(ggplot2)
+
+```
 
 
-\clearpage
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r , message = FALSE, warning = FALSE}
+# Libraries
+
+library(tidyverse)
+library(readr)
+library(kableExtra)
+library(bookdown)
+library(ggplot2)
+
+```
+
+
+```{r}
+crimedata <- read.csv("data/Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
+```
+
+```{r}
+tidydata <- crimedata %>%
+  filter(Offence.Division == "D Public order and security offences") %>%
+  select(Year, 
+         Offence.Division,
+         Incidents.Recorded)%>%
+  mutate(Incidents.Recorded = as.numeric(Incidents.Recorded))
+  
+
+ggplot(tidydata,
+       aes(Year, Incidents.Recorded))+
+  geom_col()
+```
+
+
 
 # Section 4
 
