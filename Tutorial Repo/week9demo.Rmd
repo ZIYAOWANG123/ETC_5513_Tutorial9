@@ -35,6 +35,11 @@ header-includes:
 
 # Section 1
 
+```{r library}
+library(broom)
+library(tidyverse)
+library()
+```
 
 \clearpage
 
